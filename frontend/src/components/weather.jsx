@@ -109,11 +109,11 @@ const WeatherApp = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70 z-0" />
 
       <div className="relative z-10 min-h-screen flex flex-col items-center px-4 py-8 sm:py-12">
-        <Header 
-          city={city} 
-          setCity={setCity} 
-          fetchWeather={fetchWeather} 
-          loading={loading} 
+        <Header
+          city={city}
+          setCity={setCity}
+          fetchWeather={fetchWeather}
+          loading={loading}
         />
 
         <main className="w-full max-w-6xl flex-grow">
@@ -129,31 +129,34 @@ const WeatherApp = () => {
           )}
 
           {weather && !showForecast && (
-            <CurrentWeather 
-              weather={weather} 
-              locationName={locationName} 
-              currentTime={currentTime} 
-              kelvinToCelsius={kelvinToCelsius} 
-              mpsToKmph={mpsToKmph} 
-              weatherCondition={weatherCondition} 
-              fetchForecast={fetchForecast} 
+            <CurrentWeather
+              weather={weather}
+              locationName={locationName}
+              currentTime={currentTime}
+              kelvinToCelsius={kelvinToCelsius}
+              mpsToKmph={mpsToKmph}
+              weatherCondition={weatherCondition}
+              fetchForecast={fetchForecast}
             />
           )}
 
           {forecast && showForecast && (
-            <WeatherForecast 
-              forecast={forecast} 
-              locationName={locationName} 
-              kelvinToCelsius={kelvinToCelsius} 
-              mpsToKmph={mpsToKmph} 
-              setShowForecast={setShowForecast} 
+            <WeatherForecast
+              forecast={forecast}
+              locationName={locationName}
+              kelvinToCelsius={kelvinToCelsius}
+              mpsToKmph={mpsToKmph}
+              setShowForecast={setShowForecast}
             />
           )}
         </main>
 
         <footer className="mt-8 text-center text-white/70 text-sm">
-          <p className="mt-1">{currentTime.toLocaleString()}</p>
+          <p className="mt-1">
+            {currentTime.toLocaleString([], { hour: '2-digit', minute: '2-digit', year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
         </footer>
+
       </div>
     </div>
   );
